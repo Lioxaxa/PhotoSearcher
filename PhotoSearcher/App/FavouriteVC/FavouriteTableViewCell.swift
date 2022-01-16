@@ -7,10 +7,10 @@
 
 import UIKit
 
- class FavouriteTableViewCell: UITableViewCell {
+final class FavouriteTableViewCell: UITableViewCell {
     
-    var littleImage = UIImageView()
-    var labelUserName = UILabel()
+     var littleImage = UIImageView()
+     var labelUserName = UILabel()
      
      override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier)

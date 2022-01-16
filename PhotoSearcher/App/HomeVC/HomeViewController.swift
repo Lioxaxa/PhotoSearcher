@@ -8,17 +8,16 @@
 import UIKit
 import Kingfisher
 
-
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     private let searchBar = UISearchBar()
-    let networkMethod = NetworkMethods()
+    private let networkMethod = NetworkMethods()
     
-    var searchResult: [MainModel] = []
-    var searchIsOn: Bool?
-    var imageURL: String?
-    var rootImage: UIImageView?
+    private var searchResult: [MainModel] = []
+    private var searchIsOn: Bool?
+    private var imageURL: String?
+    private var rootImage: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

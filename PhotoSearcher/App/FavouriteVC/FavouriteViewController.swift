@@ -8,12 +8,12 @@ import UIKit
 
 
 
-class FavouriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class FavouriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var dataSource = [FavData().self]
+    private var dataSource = [FavData().self]
     private var myTableView: UITableView!
     private let myArray: NSArray = ["First","Second","Third"]
-    var InfoContr = InfoViewController()
+    private var InfoContr = InfoViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.labelUserName.text = "Author:\(dataSource.first?.nameData?.first) "
         cell.littleImage.image = dataSource.first?.imageData
         print("v name: \(InfoContr.dataSourceFromInfo.first?.nameData)")
-
+        
         print("v table: \(dataSource.count)")
         return cell
     }

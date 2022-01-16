@@ -40,14 +40,14 @@ final class InfoViewController: UIViewController, UITableViewDelegate {
         button.addTarget(self, action: #selector(addToFavButtonAction), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setFullSizeImage()
         setUI()
     }
-
+    
     //MARK: - SetUI
     
     func setFullSizeImage() {
@@ -69,7 +69,7 @@ final class InfoViewController: UIViewController, UITableViewDelegate {
         userNameLabel.textAlignment = .center
         userNameLabel.text = "Author: " + (userNameLabelText ?? " ")
         self.view.addSubview(userNameLabel)
-            
+        
         dateLabel.frame.size = CGSize(width: 250, height: 30)
         dateLabel.textAlignment = .center
         dateLabel.center.x = userNameLabel.center.x
@@ -94,20 +94,20 @@ final class InfoViewController: UIViewController, UITableViewDelegate {
         addToFavButton.frame.size = CGSize(width: 250, height: 40)
         addToFavButton.center.x = downloadsLabel.center.x
         addToFavButton.center.y = downloadsLabel.center.y + 60
-
+        
         self.view.addSubview(addToFavButton)
     }
-       
+    
     @objc private func addToFavButtonAction() {
-            addToFavButton.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-            addToFavButton.setTitle("Delete from favourite", for: .normal)
-            print("button fav tapped")
-            
-            dataSourceFromInfo.append(FavData(nameData: userNameLabelText, imageData: image))
-            print("in resource: \(dataSourceFromInfo.count)")
-            print(dataSourceFromInfo.first?.nameData!)
+        addToFavButton.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        addToFavButton.setTitle("Delete from favourite", for: .normal)
+        print("button fav tapped")
         
-            
+        dataSourceFromInfo.append(FavData(nameData: userNameLabelText, imageData: image))
+        print("in resource: \(dataSourceFromInfo.count)")
+        print(dataSourceFromInfo.first?.nameData!)
+        
+        
     }
-
+    
 }
