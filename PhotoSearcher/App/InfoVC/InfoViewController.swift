@@ -58,9 +58,17 @@ final class InfoViewController: UIViewController, UITableViewDelegate {
     required init?(coder: NSCoder) {
         fatalError("Image URL has not been implemented")
     }
+    var dataSourceImages: [String] {
+        return UserDefaults.getFavoritesImages()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if dataSourceImages.contains(where: {$0 == imageString }){
+            addToFavButton.isHidden = true
+            deleteFromFavButton.isHidden = false
+        }
         
         setUI()
     }
