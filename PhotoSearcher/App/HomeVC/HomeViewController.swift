@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  WhiteFluffyTest
+//  PhotoSearcher
 //
 //  Created by Alex Pupko on 12.01.22.
 //
@@ -13,11 +13,8 @@ final class HomeViewController: UIViewController {
     private var collectionView: UICollectionView?
     private let searchBar = UISearchBar()
     private let networkMethod = NetworkMethods()
-    
     private var searchResult: [MainModel] = []
-    private var searchIsOn: Bool?
     private var imageURL: String?
-    private var rootImage: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +45,6 @@ final class HomeViewController: UIViewController {
     
     func  searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        //        searchIsOn = true
         if let text = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             searchResult = []
             collectionView?.reloadData()
@@ -105,15 +101,12 @@ extension HomeViewController: UISearchBarDelegate {
     }
 }
 
-
 //MARK: - CollectionViewMethods
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return searchResult.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -122,9 +115,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell ()
         }
-        cell.configure(with: (imageURL ?? ""), completion: { [self] image in
-            self.rootImage?.image = image
-        })
+        cell.configure(with: imageURL ?? "")
         return cell
     }
     
@@ -138,18 +129,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let loads = "\(searchResult[indexPath.item].downloads ?? 0)"
         let fullImageURL = searchResult[indexPath.item].urls?.regular
         
-        let controller = InfoViewController()
-        controller.fullSizeImage.kf.setImage(with: URL(string:fullImageURL!))
+        guard let urlString = fullImageURL else { return }
+        let controller = InfoViewController(imageUrlString: urlString, userName: userFullName)
         controller.userNameLabelText = userFullName
         controller.dateLabelText = dateUpdated
         controller.locationLabelText = location
         controller.downloadsLabelText = loads
         
         present(controller, animated: true, completion: nil)
-        
-        
-    }
     
+    }
     
 }
 

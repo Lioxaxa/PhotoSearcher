@@ -1,8 +1,8 @@
 //
 //  DateFormatter.swift
+//  PhotoSearcher
 //
-//  Created by Alex Pupko on 27.09.21.
-//  Copyright © 2021 Alex Pupko. All rights reserved.
+//  Created by Alex Pupko on 12.01.22.
 //
 
 import Foundation

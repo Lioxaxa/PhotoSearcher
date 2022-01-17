@@ -1,6 +1,6 @@
 //
 //  UITabBarController.swift
-//  WhiteFluffyTest
+//  PhotoSearcher
 //
 //  Created by Alex Pupko on 12.01.22.
 //
@@ -19,7 +19,7 @@ final class MainTabBar: UITabBarController {
         HomeVC.title = "Home"
         HomeVC.tabBarItem.image = UIImage(systemName: "house")
      
-        let favVC = FavouriteViewController()
+        let favVC = FavoriteViewController()
         favVC.title = "Favourite"
         favVC.tabBarItem.image = UIImage(systemName: "star")
 

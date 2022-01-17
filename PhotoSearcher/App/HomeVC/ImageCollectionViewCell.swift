@@ -1,3 +1,9 @@
+//
+//  ImageCollectionViewCell.swift
+//  PhotoSearcher
+//
+//  Created by Alex Pupko on 12.01.22.
+//
 
 import UIKit
 
@@ -11,7 +17,6 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     } ()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +35,7 @@ final class ImageCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    func configure(with urlString : String,completion: @escaping (UIImage) -> Void) {
+    func configure(with urlString : String) {
         guard let url = URL(string: urlString) else {
             return
         }
@@ -41,7 +46,6 @@ final class ImageCollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
                 self?.imageView.image = image
-                completion(image!)
             }
         }
         task.resume()

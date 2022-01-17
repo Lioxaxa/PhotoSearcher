@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  WhiteFluffyTest
+//  PhotoSearcher
 //
 //  Created by Alex Pupko on 12.01.22.
 //
